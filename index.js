@@ -7,6 +7,7 @@ initialise();
 
 function initialise() {
     for(list of lists){
+        //To select a particular element and drag it to the respective container
         list.addEventListener("dragstart", function(e){
             let selected = e.target;
     
@@ -29,20 +30,24 @@ function initialise() {
                 this.style.backgroundColor = ""
                 successMessage.innerText = "Item dropped in container 1 successfully!";
             });
-    
+
+            // Visual aid for choosing a container
             rightBox.addEventListener("dragenter", function (e) {
                 e.preventDefault();
                 this.style.backgroundColor = "#0b0450";
             });
     
-            rightBox.addEventListener("dragleave", function () {
-                this.style.backgroundColor = "";
-            });
             leftBox.addEventListener("dragenter", function (e) {
                 e.preventDefault();
                 this.style.backgroundColor = "#0b0450";
             });
-    
+            
+            //Reverts back to original colour
+            
+            rightBox.addEventListener("dragleave", function () {
+                this.style.backgroundColor = "";
+            });
+
             leftBox.addEventListener("dragleave", function () {
                 this.style.backgroundColor = "";
             });
@@ -50,7 +55,7 @@ function initialise() {
     }
 }
 
-function resetContainers() {
+function resetContainers() { // to reset the containers and the events
     leftBox.innerHTML = `
     <div class="list" draggable="true">List Item 1</div>
         <div class="list" draggable="true">List Item 2</div>
